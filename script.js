@@ -5,6 +5,7 @@ const spanAprovado = '<span class="resultado aprovado">Aprovado</span>';
 const spanReprovado = '<span class="resultado reprovado">Reprovado</span>';
 const atividade = [];
 const notas = [];
+const notaMinima = parseInt(prompt("Digite a nota mínima para aprovação:"));
 
 let linhas = '';
 
@@ -32,7 +33,7 @@ const addLinhas = () => {
         let linha = '<tr>';
         linha += `<td>${nomeAtividade}</td>`
         linha += `<td>${notaAtividade}</td>`
-        linha += `<td>${notaAtividade >= 7 ? imgAprovado : imgReprovado}</td>`
+        linha += `<td>${notaAtividade >= notaMinima ? imgAprovado : imgReprovado}</td>`
         linha += '</tr>';
         linhas += linha;
     }
@@ -47,7 +48,7 @@ const mediaFinal = () => {
     const mediaFinal = calcularMedia();
 
     resultado.innerHTML = mediaFinal;
-    resultadoFinal.innerHTML = mediaFinal >= 7 ? spanAprovado : spanReprovado;
+    resultadoFinal.innerHTML = mediaFinal >= notaMinima ? spanAprovado : spanReprovado;
 };
 
 const atualizarTabela = () => {
